@@ -13,8 +13,8 @@ main = do
     putStrLn (hCodes myStr)
 
 -- |Take a string and group by element, then return sorted tuple
-freqCount :: Eq a => [a] -> [([a], Int)]
-freqCount x = sortBy (compare `on` snd) . map (\x -> ([head x], length x)) . group $ x
+freqCount :: Ord a => [a] -> [([a], Int)]
+freqCount x = sortBy (compare `on` snd) . map (\x -> ([head x], length x)) . group . sort $ x
 
 -- |Get Tree structure in order
 htree :: (Num a, Ord a) => [(a, HTree a1)] -> HTree a1
